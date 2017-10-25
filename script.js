@@ -27,12 +27,12 @@ function reboot () {
 			}
 			//test if fail
 			else if (request.readyState == 4 && request.status == 500) {
-				alert ("server error");
+				alert ("Rebooting! Please wait");
 				return ("fail");
 			}
 			//else
 			else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) {
-				alert ("Something went wrong!");
+				alert ("Rebooting! Please wait");
 				return ("fail");
 			}
 		}
