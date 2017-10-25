@@ -56,12 +56,12 @@
   $CLOSED = 0;
   $OPEN = 1;
   $val_array = array($CLOSED,$CLOSED,$OPEN,$OPEN,$OPEN,$OPEN,$OPEN,$OPEN);
-	$type_array = array($TOGGLE, $TOGGLE, $TOGGLE,$TOGGLE,$TOGGLE,$TOGGLE,$TOGGLE,$TOGGLE);
+	$type_array = array($TOGGLE, $TOGGLE, $MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
 	//this php script generate the first page in function of the file
   echo( "<h1>".$settings["title"]."</h1>");
 	for ( $i= 0; $i< 8; $i++) {
 		//set the pin's mode to output and read them
-		system("gpio mode ".$i." out");
+		// system("gpio mode ".$i." out");
 		exec ("gpio read ".$i, $val_array[$i], $return );
 	}
 	//for loop to read the value
@@ -70,7 +70,6 @@
 		//if off
     echo ("<span class='button'>");
 		if ($val_array[$i][0] == 0 ) {
-
 			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/red/red_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/>");
 		}
 		//if on
