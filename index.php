@@ -71,7 +71,7 @@
 		//set the pin's mode to output and read them
 		// system("gpio mode ".$i." out");
     //set the initial state for momentaries
-    system("gpio write ".$i." ".$initial_array[$i] );
+    if($initial_array[$i] > 0 ){ system("gpio write ".$i." ".$initial_array[$i] ); }
 		exec ("gpio read ".$i, $val_array[$i], $return );
 	}
   echo ("<span class='button'></span>");
