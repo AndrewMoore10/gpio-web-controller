@@ -89,7 +89,10 @@
     echo ("</span>");
 	}
 	?>
+  <BR/>
+** REMINDER THIS WILL SWITCH THE OUTPUT OF THE CHP: USE RESPONSIBLY **
 </div>
+
 	<!-- javascript -->
   <script src="script.js"></script>
     </body>
