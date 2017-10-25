@@ -68,7 +68,7 @@
 	$i =0;
 	for ($i = 0; $i < 8; $i++) {
 		//if off
-    echo ("<span class='button'>")
+    echo ("<span class='button'>");
 		if ($val_array[$i][0] == 0 ) {
 
 			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/red/red_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/>");
@@ -77,7 +77,7 @@
 		if ($val_array[$i][0] == 1 ) {
 			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/green/green_".$i.".jpg' onclick='change_pin (".$i.");'/>");
 		}
-    echo ("</span>")
+    echo ("</span>");
 	}
 	?>
 </div>
