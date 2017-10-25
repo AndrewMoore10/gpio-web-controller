@@ -64,6 +64,7 @@
 		// system("gpio mode ".$i." out");
 		exec ("gpio read ".$i, $val_array[$i], $return );
 	}
+  echo ("<span class='button'></span>");
 	//for loop to read the value
 	$i =0;
 	for ($i = 0; $i < 8; $i++) {
