@@ -14,12 +14,14 @@ var button_7 = document.getElementById("button_7");
 var Buttons = [ button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7];
 
 //This function is asking for gpio.php, receiving datas and updating the index.php pictures
-function change_pin ( pic ) {
+function change_pin ( pic, type = 0 ) {
 var data = 0;
 //send the pic number to gpio.php for changes
 //this is the http request
 	var request = new XMLHttpRequest();
-	request.open( "GET" , "gpio.php?pic=" + pic, true);
+	url = "gpio.php?pic=";
+	if(type == 1) url = "gpio_momentary.php?pic="
+	request.open( "GET" , url + pic, true);
 	request.send(null);
 	//receiving informations
 	request.onreadystatechange = function () {
@@ -34,11 +36,11 @@ var data = 0;
 			}
 			else if ( !(data.localeCompare("fail"))) {
 				alert ("Something went wrong!" );
-				return ("fail");			
+				return ("fail");
 			}
 			else {
 				alert ("Something went wrong!" );
-				return ("fail"); 
+				return ("fail");
 			}
 		}
 		//test if fail
@@ -46,11 +48,11 @@ var data = 0;
 			alert ("server error");
 			return ("fail");
 		}
-		//else 
-		else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) { 
+		//else
+		else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) {
 			alert ("Something went wrong!");
 			return ("fail"); }
-	}	
-	
+	}
+
 return 0;
 }
