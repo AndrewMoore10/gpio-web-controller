@@ -43,6 +43,13 @@
             border: 5px #999 solid;
 
           }
+          .reboot{
+            width: 100px;
+            height: 100px;
+            position: absolute;
+            right: 200px;
+            top: 20px;
+          }
         </style>
     </head>
 
@@ -57,11 +64,14 @@
   $OPEN = 1;
   $val_array = array(0,0,0,0,0,0,0,0);
 	$type_array = array($TOGGLE, $TOGGLE,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
+  $initial_array = array(-1,-1,$OPEN,$OPEN,$OPEN,$OPEN,$OPEN,$OPEN);
 	//this php script generate the first page in function of the file
   echo( "<h1>".$settings["title"]."</h1>");
 	for ( $i= 0; $i< 8; $i++) {
 		//set the pin's mode to output and read them
 		// system("gpio mode ".$i." out");
+    //set the initial state for momentaries
+    system("gpio write ".$i." ".$initial_array[$i] );
 		exec ("gpio read ".$i, $val_array[$i], $return );
 	}
   echo ("<span class='button'></span>");
@@ -82,6 +92,7 @@
 	?>
 </div>
 
+<div class='reboot' ><a href="#" onclick='reboot()' >reboot</a></div>
 	<!-- javascript -->
   <script src="script.js"></script>
     </body>

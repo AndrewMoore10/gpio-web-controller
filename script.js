@@ -14,6 +14,31 @@ var button_7 = document.getElementById("button_7");
 var Buttons = [ button_0, button_1, button_2, button_3, button_4, button_5, button_6, button_7];
 
 //This function is asking for gpio.php, receiving datas and updating the index.php pictures
+function reboot () {
+	// alert("REBOOT");
+	if(confirm("Are you sure you want to reboot? Transmitter will turn off while its rebooting.")){
+
+		var request = new XMLHttpRequest();
+		request.open( "GET" , "reboot.php" , true);
+		request.send(null);
+
+		request.onreadystatechange = function () {
+			if (request.readyState == 4 && request.status == 200) {
+			}
+			//test if fail
+			else if (request.readyState == 4 && request.status == 500) {
+				alert ("server error");
+				return ("fail");
+			}
+			//else
+			else if (request.readyState == 4 && request.status != 200 && request.status != 500 ) {
+				alert ("Something went wrong!");
+				return ("fail");
+			}
+		}
+	}
+	return false;
+}
 function change_pin ( pic, type = 0 ) {
 var data = 0;
 //send the pic number to gpio.php for changes
