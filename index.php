@@ -56,7 +56,7 @@
   $CLOSED = 0;
   $OPEN = 1;
   $val_array = array(0,0,0,0,0,0,0,0);
-	$type_array = array($TOGGLE, $TOGGLE, $MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
+	$type_array = array($TOGGLE, $TOGGLE,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
 	//this php script generate the first page in function of the file
   echo( "<h1>".$settings["title"]."</h1>");
 	for ( $i= 0; $i< 8; $i++) {
@@ -69,12 +69,12 @@
 	for ($i = 0; $i < 8; $i++) {
 		//if off
     echo ("<span class='button'>");
-		if ($val_array[$i][0] == 0 ) {
+		if ($val_array[$i][0] == $CLOSED ) {
 			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/red/red_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/>");
 		}
 		//if on
-		if ($val_array[$i][0] == 1 ) {
-			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/green/green_".$i.".jpg' onclick='change_pin (".$i.");'/>");
+		if ($val_array[$i][0] == $OPEN ) {
+			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/green/green_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/>");
 		}
     echo ("</span>");
 	}
