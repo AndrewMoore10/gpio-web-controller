@@ -56,7 +56,7 @@
   $CLOSED = 0;
   $OPEN = 1;
   $val_array = array(0,0,0,0,0,0,0,0);
-	$type_array = array($TOGGLE, $TOGGLE,$MOMENTARY,$MOMENTARY,$TOGGLE,$MOMENTARY,$MOMENTARY,$MOMENTARY);
+	$type_array = array($TOGGLE, $TOGGLE,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
 	//this php script generate the first page in function of the file
   echo( "<h1>".$settings["title"]."</h1>");
 	for ( $i= 0; $i< 8; $i++) {
