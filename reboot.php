@@ -1,4 +1,4 @@
 <?php
-system("reboot" );
+system("sudo reboot" );
 echo ("command sent");
 ?>
