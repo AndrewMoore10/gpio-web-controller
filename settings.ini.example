@@ -1,0 +1,18 @@
+; This is a sample configuration file
+; Comments start with ';', as in php.ini
+
+[settings]
+title = "CHP Remote control"
+
+;[second_section]
+;title = "/usr/local/bin"
+;URL = "http://www.example.com/~username"
+
+;[third_section]
+;phpversion[] = "5.0"
+;phpversion[] = "5.1"
+;phpversion[] = "5.2"
+;phpversion[] = "5.3"
+
+;urls[svn] = "http://svn.php.net"
+;urls[git] = "http://git.php.net"

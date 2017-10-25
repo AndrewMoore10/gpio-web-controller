@@ -4,12 +4,53 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <title>Raspberry Pi Gpio</title>
+        <title>GPIO Controller</title>
+
+        <style type="text/css" media="screen">
+          * {
+          margin: 0px 0px 0px 0px;
+          padding: 0px 0px 0px 0px;
+          }
+
+          body, html {
+            margin: 0px 0px 0px 0px;
+            padding: 0px 0px 0px 0px;
+          background-color: #ddd;
+
+          font-family: Verdana, sans-serif;
+          font-size: 11pt;
+          text-align: center;
+          }
+          h1{
+            padding-top: 40px;
+            font-size: 36pt;
+          }
+          .content{
+            background-color: #eee;
+            width: 700px;
+            margin: auto;
+            min-height: 100vh;
+          }
+          .button{
+            display: inline-block;
+            width: 128px;
+            margin: 20px;
+          }
+          .type_1{
+            border: 5px rgba(0, 0, 0, 0.0) solid;
+          }
+          .type_1:active{
+            border: 5px #999 solid;
+
+          }
+        </style>
     </head>
 
-    <body style="background-color: black;">
+    <body>
+      <div class="content">
     <!-- On/Off button's picture -->
 	<?php
+  $settings =  parse_ini_file ( "settings.ini" );
   $TOGGLE = 0;
   $MOMENTARY = 1;
   $CLOSED = 0;
@@ -17,6 +58,7 @@
   $val_array = array($CLOSED,$CLOSED,$CLOSED,$CLOSED,$CLOSED,$CLOSED,$CLOSED,$CLOSED);
 	$type_array = array($TOGGLE, $TOGGLE, $MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY,$MOMENTARY);
 	//this php script generate the first page in function of the file
+  echo( "<h1>".$settings["title"]."</h1>");
 	for ( $i= 0; $i< 8; $i++) {
 		//set the pin's mode to output and read them
 		system("gpio mode ".$i." out");
@@ -27,16 +69,19 @@
 	for ($i = 0; $i < 8; $i++) {
 		//if off
 		if ($val_array[$i][0] == 0 ) {
-			echo ("<img id='button_".$i."' src='data/img/red/red_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/>");
+
+			echo ("<span class='button'><img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/red/red_".$i.".jpg' onclick='change_pin (".$i.", ".$type_array[$i].");'/></span>");
 		}
 		//if on
 		if ($val_array[$i][0] == 1 ) {
-			echo ("<img id='button_".$i."' src='data/img/green/green_".$i.".jpg' onclick='change_pin (".$i.");'/>");
+			echo ("<img id='button_".$i."' class='type_".$type_array[$i]."' src='data/img/green/green_".$i.".jpg' onclick='change_pin (".$i.");'/>");
 		}
 	}
 	?>
+</div>
 
 	<!-- javascript -->
-	<script src="script.js"></script>
+  <script src="script.js"></script>
+	<script src="config.js"></script>
     </body>
 </html>
