@@ -2,7 +2,7 @@
 ; Comments start with ';', as in php.ini
 
 [settings]
-title = "CHP Remote control"
+title = "Remote controller"
 
 ;[second_section]
 ;title = "/usr/local/bin"
